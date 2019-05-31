@@ -297,7 +297,8 @@ struct IO
             if (!(diskinfo >> skip >> skip >> name)) break;
             if (!name.empty()
                 && (prev.empty() || (name.find(prev) != 0)) // skip partitions
-                && (name.find("dm") != 0)) // skip device mapper
+                && (name.find("dm") != 0) // skip device mapper
+                && (name.find("loop") != 0)) // skip loop devices
             {
                 prev = name;
                 Device& device = devices[name];
